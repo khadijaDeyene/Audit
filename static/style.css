@@ -1,0 +1,32 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    text-align: center;
+}
+
+.container {
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    width: 50%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.logos {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.logo-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+select, button {
+    display: block;
+    margin: 10px auto;
+    padding: 5px;
+}
