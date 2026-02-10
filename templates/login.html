@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .password-container {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        input[type="password"], input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            user-select: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        p.error {
+            margin-top: 10px;
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <form method="POST">
+        <h2>Login</h2>
+        <div class="password-container">
+            <input type="password" name="password" placeholder="Enter password" required>
+            <span class="toggle-password">👁️</span>
+        </div>
+        <button type="submit">Login</button>
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </form>
+
+    <script>
+        const toggle = document.querySelector(".toggle-password");
+        const passwordInput = document.querySelector('input[name="password"]');
+
+        toggle.addEventListener("click", () => {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                toggle.textContent = "🙈";
+            } else {
+                passwordInput.type = "password";
+                toggle.textContent = "👁️";
+            }
+        });
+    </script>
+</body>
+</html>

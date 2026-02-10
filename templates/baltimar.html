@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Baltimar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Critères – Logo 1</h2>
+        <form method="POST">
+            <label>Choisir le type de l'audit :</label>
+            <select name="type_audit" onchange="this.form.submit()">
+                <option value="">--Sélectionner--</option>
+                <option value="Audit GMP" {% if Type_Audit=="Audit GMP" %}selected{% endif %}>Audit GMP</option>
+                <option value="Audit Housekeeping" {% if Type_Audit=="Audit Housekeeping" %}selected{% endif %}>Audit Housekeeping</option>
+                <option value="Audit GWP" {% if Type_Audit=="Audit GWP" %}selected{% endif %}>Audit GWP</option>
+            </select>
+
+            {% if zones %}
+                <label>
+                    {% if Type_Audit == "Audit GWP" %}Categorie de GWP :{% else %}Choisir la zone :{% endif %}
+                </label>
+                <select name="zone">
+                    {% for z in zones %}
+                        <option>{{ z }}</option>
+                    {% endfor %}
+                </select>
+            {% endif %}
+
+            <button type="submit" name="retour">Retour</button>
+        </form>
+    </div>
+</body>
+</html>
